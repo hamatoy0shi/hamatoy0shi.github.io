@@ -3,7 +3,7 @@
  * */
 export const removePlus = (inString: string): string => inString.replace(/^\+/, '');
 
-export const addPlus = (inString: string | number) => `+${inString}`;
+export const addPlus = (inString: string | number): string => `+${inString}`;
 
 export const removeFirstZeros = (value: string): string => value.replace(/^(-)?[0]+(-?\d+.*)$/, '$1$2');
 
@@ -32,22 +32,16 @@ export const getTransformFromCss = (transformCssString: string): returnValue => 
   };
 };
 
-interface rgb {
-  0: number;
-  1: number;
-  2: number;
-}
-
-export const getColorContrastValue = (input: Required<rgb>): number =>
+export const getColorContrastValue = (input: [number, number, number]): number =>
   // http://www.w3.org/TR/AERT#color-contrast
   Math.round((input[0] * 299 + input[1] * 587 + input[2] * 114) / 1000);
 
-export const getContrastType = (contrastValue: number): string => (contrastValue > 125 ? 'black' : 'white');
+export const getContrastType = (contrastValue: number): 'black' | 'white' => (contrastValue > 125 ? 'black' : 'white');
 
 export const shortColorRegExp = /^#[0-9a-f]{3}$/i;
 export const longColorRegExp = /^#[0-9a-f]{6}$/i;
 
-export const checkColor = (color: string): void => {
+export const checkColor = (color: string): void | never => {
   if (!longColorRegExp.test(color) && !shortColorRegExp.test(color)) throw new Error(`invalid hex color: ${color}`);
 };
 
