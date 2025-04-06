@@ -14,6 +14,6 @@ export default meta;
 
 export const Example = {
   args: {
-    count: '0',
+    count: 0,
   },
 };
