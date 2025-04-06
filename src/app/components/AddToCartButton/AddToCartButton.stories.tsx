@@ -5,7 +5,7 @@ const meta: Meta<typeof AddToCartButton> = {
   component: AddToCartButton,
   argTypes: {
     count: {
-      control: { type: 'number' },
+      control: { type: 'range', min: 0, max: 10 },
     },
   },
 };

@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 const AddToCartButton: FC<ButtonProps> = ({ count }) => {
-  if (count === 0) {
+  if (count < 1) {
     return <button className={cn(s.add_button)}>Добавить</button>;
   }
 
